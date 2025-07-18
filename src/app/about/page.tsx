@@ -1,10 +1,10 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/src/components/ui/card"
 import { Button } from "@/src/components/ui/button"
 import { Header } from "@/src/components/header"
-import { Footer } from "@/src/components/footer"
 import { Shield, Users, Award, Target, CheckCircle, Star } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
+import { Footer } from "@/src/components/footer"
 
 export default function AboutPage() {
   const stats = [

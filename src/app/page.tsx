@@ -1,11 +1,11 @@
-import { Button } from "@/src/components/ui/button"
-import { Badge } from "@/src/components/ui/badge"
-import { Card, CardDescription, CardHeader, CardTitle } from "@/src/components/ui/card"
-import { Header } from "@/src/components/header"
-import { Footer } from "@/src/components/footer"
+import { Badge } from "../components/ui/badge"
+import { Card, CardDescription, CardHeader, CardTitle } from "../components/ui/card"
+import { Header } from "../components/header"
+import { Footer } from "../components/footer"
 import { Shield, Users, Award, ArrowRight, Star, CheckCircle } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
+import { Button } from "../components/ui/button"
 
 export default function HomePage() {
   return (

@@ -1,10 +1,10 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/src/components/ui/card"
-import { Button } from "@/src/components/ui/button"
 import { Input } from "@/src/components/ui/input"
 import { Textarea } from "@/src/components/ui/textarea"
 import { Header } from "@/src/components/header"
 import { Footer } from "@/src/components/footer"
 import { CheckCircle, Upload, User, Phone, Award, Star } from "lucide-react"
+import { Button } from "@/src/components/ui/button"
 
 export default function ApplyPage() {
   const requirements = [
