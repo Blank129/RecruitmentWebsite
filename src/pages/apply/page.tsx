@@ -1,9 +1,9 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Header } from "@/components/header"
-import { Footer } from "@/components/footer"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/src/components/ui/card"
+import { Button } from "@/src/components/ui/button"
+import { Input } from "@/src/components/ui/input"
+import { Textarea } from "@/src/components/ui/textarea"
+import { Header } from "@/src/components/header"
+import { Footer } from "@/src/components/footer"
 import { CheckCircle, Upload, User, Phone, Award, Star } from "lucide-react"
 
 export default function ApplyPage() {
