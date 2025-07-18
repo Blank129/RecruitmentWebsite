@@ -36,8 +36,8 @@ export function Header() {
         </nav>
 
         <div className="flex items-center space-x-4">
-          <Link href="/apply">
-            <Button className="bg-red-600 hover:bg-red-700 hidden md:inline-flex">Ứng tuyển ngay</Button>
+          <Link href="/login">
+            <Button className="bg-red-600 hover:bg-red-700 hidden md:inline-flex">Đăng nhập</Button>
           </Link>
 
           {/* Mobile menu button */}
@@ -66,8 +66,8 @@ export function Header() {
             <Link href="/contact" className="text-white hover:text-red-400 transition-colors">
               Liên hệ
             </Link>
-            <Link href="/apply">
-              <Button className="bg-red-600 hover:bg-red-700 w-full">Ứng tuyển ngay</Button>
+            <Link href="/login">
+              <Button className="bg-red-600 hover:bg-red-700 w-full">Đăng nhập</Button>
             </Link>
           </nav>
         </div>
