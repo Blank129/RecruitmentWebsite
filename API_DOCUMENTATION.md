@@ -1,4 +1,4 @@
-# Bodyguard Recruitment API Documentation
+<!-- # Bodyguard Recruitment API Documentation
 
 ## Base URL Configuration
 The API base URL is configurable through environment variables:
@@ -310,4 +310,4 @@ The API client is configured through `lib/config.ts`:
 4. Implement error handling
 5. Add loading states
 6. Add form validation
-7. Implement real-time features
+7. Implement real-time features -->
