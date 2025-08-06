@@ -1,5 +1,13 @@
 "use client";
-import { Shield, Menu, X, User, LogOut, Settings } from "lucide-react";
+import {
+  Shield,
+  Menu,
+  X,
+  User,
+  LogOut,
+  Settings,
+  FolderKanban,
+} from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState, useRef } from "react";
 import { Button } from "./ui/button";
@@ -126,6 +134,17 @@ export function Header() {
                     Hồ sơ cá nhân
                   </Link>
 
+                  {userInfo.id_role_users === 2 && (
+                    <Link
+                      href="/manage-jobs"
+                      className="flex items-center px-4 py-2 text-sm text-slate-300 hover:bg-slate-700 hover:text-white transition-colors"
+                      onClick={() => setIsDropdownOpen(false)}
+                    >
+                      <FolderKanban className="w-4 h-4 mr-3" />
+                      Quản lí tin đăng
+                    </Link>
+                  )}
+
                   <button
                     onClick={handleLogoutClick}
                     className="flex items-center w-full px-4 py-2 text-sm text-slate-300 hover:bg-slate-700 hover:text-white transition-colors"
@@ -228,6 +247,17 @@ export function Header() {
                     <Settings className="w-4 h-4 mr-3" />
                     Hồ sơ cá nhân
                   </Link>
+
+                  {userInfo.id_role_users === 2 && (
+                    <Link
+                      href="/manage-jobs"
+                      className="flex items-center px-4 py-2 text-sm text-slate-300 hover:bg-slate-700 hover:text-white transition-colors"
+                      onClick={() => setIsDropdownOpen(false)}
+                    >
+                      <FolderKanban className="w-4 h-4 mr-3" />
+                      Quản lí tin đăng
+                    </Link>
+                  )}
 
                   <button
                     onClick={() => {
