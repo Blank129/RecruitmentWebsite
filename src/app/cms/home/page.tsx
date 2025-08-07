@@ -1,5 +1,5 @@
 export default function HomeCmsPage() {
     return (
-        <div>Home CMS</div>
+        <div>Home CMS </div>
     )
 }
