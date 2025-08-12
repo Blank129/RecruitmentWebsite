@@ -250,7 +250,7 @@ export default function CandidateProfilePage() {
             className="text-4xl font-bold text-white mb-2"
             style={{ paddingTop: "28px" }}
           >
-            Hồ Sơ Ứng Viên
+            Hồ Sơ Nhà Tuyển Dụng
           </h1>
           <p className="text-lg text-slate-400">
             Quản lý và cập nhật thông tin cá nhân của bạn
@@ -302,13 +302,6 @@ export default function CandidateProfilePage() {
                     <User className="w-4 h-4" />
                     Chỉnh sửa
                   </button>
-                  <button
-                    onClick={() => setShowApplyHistory(true)}
-                    className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-all flex items-center gap-2 text-sm sm:text-base"
-                  >
-                    <History className="w-4 h-4" />
-                    Lịch sử Apply
-                  </button>
                 </>
               ) : (
                 <div className="flex gap-2">
@@ -355,78 +348,6 @@ export default function CandidateProfilePage() {
           </div>
         </div>
       </div>
-
-      {/* Apply History Modal */}
-      {showApplyHistory && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-lg max-w-4xl w-full max-h-[80vh] overflow-hidden">
-            {/* Modal Header */}
-            <div className="flex items-center justify-between p-6 border-b border-gray-200">
-              <h3 className="text-xl font-semibold text-gray-900 flex items-center gap-2">
-                <History className="w-6 h-6 text-blue-600" />
-                Lịch sử Apply
-              </h3>
-              <button
-                onClick={() => setShowApplyHistory(false)}
-                className="p-2 hover:bg-gray-100 rounded-full transition-colors"
-              >
-                <X className="w-5 h-5 text-gray-500" />
-              </button>
-            </div>
-
-            {/* Modal Content */}
-            <div className="p-6 overflow-y-auto max-h-[calc(80vh-120px)]">
-              {applyHistory.length > 0 ? (
-                <div className="space-y-4">
-                  {applyHistory.map((item) => (
-                    <div
-                      key={item.id}
-                      className="bg-gray-50 border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow"
-                    >
-                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-                        <div className="flex-1">
-                          <h4 className="text-lg font-medium text-gray-900 mb-1">
-                            {item.jobTitle}
-                          </h4>
-                          <div className="flex items-center gap-2 text-gray-600 mb-2">
-                            <Building className="w-4 h-4" />
-                            <span className="text-sm">{item.company}</span>
-                          </div>
-                          <div className="flex items-center gap-2 text-gray-500">
-                            <Clock className="w-4 h-4" />
-                            <span className="text-sm">
-                              {formatDate(item.appliedAt)}
-                            </span>
-                          </div>
-                        </div>
-                        {/* <div className="flex-shrink-0">
-                          <span
-                            className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium border ${getStatusColor(
-                              item.status
-                            )}`}
-                          >
-                            {getStatusText(item.status)}
-                          </span>
-                        </div> */}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              ) : (
-                <div className="text-center py-12">
-                  <History className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-                  <h4 className="text-lg font-medium text-gray-900 mb-2">
-                    Chưa có lịch sử apply
-                  </h4>
-                  <p className="text-gray-500">
-                    Bạn chưa apply vào tin tuyển dụng nào
-                  </p>
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
-      )}
 
       {/* Profile Content */}
       <div className="p-8">
@@ -541,49 +462,6 @@ export default function CandidateProfilePage() {
                 )}
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-medium text-white mb-2">
-                    Chiều cao (cm)
-                  </label>
-                  <div className="relative">
-                    <Ruler className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-                    <input
-                      type="number"
-                      name="height"
-                      value={profile.height}
-                      style={{
-                        color: "rgb(75 85 99 / var(--tw-text-opacity, 1))",
-                      }}
-                      onChange={handleInputChange}
-                      disabled={!isEditing}
-                      className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 disabled:bg-gray-50 disabled:text-gray-600 transition-all"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-white mb-2">
-                    Cân nặng (kg)
-                  </label>
-                  <div className="relative">
-                    <Weight className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-                    <input
-                      type="number"
-                      //step="0.1"
-                      name="weight"
-                      value={profile.weight}
-                      style={{
-                        color: "rgb(75 85 99 / var(--tw-text-opacity, 1))",
-                      }}
-                      onChange={handleInputChange}
-                      disabled={!isEditing}
-                      className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 disabled:bg-gray-50 disabled:text-gray-600 transition-all"
-                    />
-                  </div>
-                </div>
-              </div>
-
               <div>
                 <label className="block text-sm font-medium text-white mb-2">
                   Địa chỉ
@@ -605,87 +483,8 @@ export default function CandidateProfilePage() {
               </div>
             </div>
           </div>
-
-          {/* Professional Information */}
-          <div className="space-y-6">
-            <h3 className="text-2xl font-semibold text-white flex items-center gap-2">
-              <Briefcase className="w-6 h-6 text-blue-600" />
-              Thông Tin Nghề Nghiệp
-            </h3>
-
-            <div className="space-y-4">
-              <div>
-                <label className="block text-sm font-medium text-white mb-2">
-                  Kinh nghiệm làm việc
-                </label>
-                <textarea
-                  name="work_experiences"
-                  value={profile.work_experiences}
-                  style={{
-                    color: "rgb(75 85 99 / var(--tw-text-opacity, 1))",
-                  }}
-                  onChange={handleInputChange}
-                  disabled={!isEditing}
-                  rows={8}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 disabled:bg-gray-50 disabled:text-gray-600 transition-all resize-none"
-                  placeholder="Mô tả kinh nghiệm làm việc của bạn..."
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-white mb-2">
-                  CV/Hồ sơ
-                </label>
-                <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-blue-400 transition-colors">
-                  {profile.cv && profile.cvFileName ? (
-                    <div className="space-y-3">
-                      <div className="flex items-center justify-center gap-2 text-green-600">
-                        <FileText className="w-8 h-8" />
-                      </div>
-                      <div className="bg-green-50 border border-green-200 rounded-lg p-3">
-                        <div className="flex items-center justify-center gap-2 text-green-700">
-                          <FileText className="w-5 h-5" />
-                          <span className="font-medium text-sm">
-                            {profile.cvFileName}
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  ) : profile.cv ? (
-                    <div className="flex items-center justify-center gap-2 text-green-600">
-                      <FileText className="w-8 h-8" />
-                    </div>
-                  ) : (
-                    <div className="text-gray-500">
-                      <Upload className="w-12 h-12 mx-auto mb-4 text-gray-400" />
-                      <p className="text-lg font-medium mb-2">
-                        Tải lên CV của bạn
-                      </p>
-                      <p className="text-sm">
-                        Hỗ trợ PDF, DOC, DOCX (tối đa 5MB)
-                      </p>
-                    </div>
-                  )}
-
-                  {isEditing && (
-                    <label className="mt-4 inline-flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg cursor-pointer transition-colors">
-                      <FileText className="w-5 h-5 mr-2" />
-                      {profile.cv ? "Thay đổi CV" : "Chọn file CV"}
-                      <input
-                        type="file"
-                        accept=".pdf,.doc,.docx"
-                        onChange={(e) => handleFileUpload(e, "cv")}
-                        className="hidden"
-                      />
-                    </label>
-                  )}
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
-
       <Footer />
     </div>
   );
