@@ -1,7 +1,9 @@
 "use client";
 import { Badge } from "../components/ui/badge";
+import { useState, useRef } from "react";
 import {
   Card,
+  CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
@@ -15,6 +17,8 @@ import {
   ArrowRight,
   Star,
   CheckCircle,
+  ChevronDown,
+  ChevronUp,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -28,6 +32,108 @@ import {
 } from "../components/ui/carousel";
 
 export default function HomePage() {
+  const [showAll, setShowAll] = useState(false);
+  const team = [
+    {
+      name: "Nguyễn Văn Minh",
+      position: "Giám đốc điều hành",
+      experience: "15 năm kinh nghiệm trong lĩnh vực an ninh",
+      image: "/placeholder.svg?height=300&width=300",
+    },
+    {
+      name: "Trần Thị Lan",
+      position: "Trưởng phòng tuyển dụng",
+      experience: "10 năm kinh nghiệm tuyển dụng nhân sự bảo vệ",
+      image: "/placeholder.svg?height=300&width=300",
+    },
+    {
+      name: "Lê Hoàng Nam",
+      position: "Trưởng phòng đào tạo",
+      experience: "12 năm kinh nghiệm đào tạo vệ sĩ chuyên nghiệp",
+      image: "/placeholder.svg?height=300&width=300",
+    },
+    {
+      name: "Nguyễn Văn Minh",
+      position: "Giám đốc điều hành",
+      experience: "15 năm kinh nghiệm trong lĩnh vực an ninh",
+      image: "/placeholder.svg?height=300&width=300",
+    },
+    {
+      name: "Trần Thị Lan",
+      position: "Trưởng phòng tuyển dụng",
+      experience: "10 năm kinh nghiệm tuyển dụng nhân sự bảo vệ",
+      image: "/placeholder.svg?height=300&width=300",
+    },
+    {
+      name: "Lê Hoàng Nam",
+      position: "Trưởng phòng đào tạo",
+      experience: "12 năm kinh nghiệm đào tạo vệ sĩ chuyên nghiệp",
+      image: "/placeholder.svg?height=300&width=300",
+    },
+    {
+      name: "Nguyễn Văn Minh",
+      position: "Giám đốc điều hành",
+      experience: "15 năm kinh nghiệm trong lĩnh vực an ninh",
+      image: "/placeholder.svg?height=300&width=300",
+    },
+    {
+      name: "Trần Thị Lan",
+      position: "Trưởng phòng tuyển dụng",
+      experience: "10 năm kinh nghiệm tuyển dụng nhân sự bảo vệ",
+      image: "/placeholder.svg?height=300&width=300",
+    },
+    {
+      name: "Lê Hoàng Nam",
+      position: "Trưởng phòng đào tạo",
+      experience: "12 năm kinh nghiệm đào tạo vệ sĩ chuyên nghiệp",
+      image: "/placeholder.svg?height=300&width=300",
+    },
+  ];
+  const sectionRef = useRef<HTMLElement>(null);
+
+  const handleToggle = () => {
+    if (showAll) {
+      // Khi thu gọn, scroll mượt về đầu section
+      if (sectionRef.current) {
+        sectionRef.current.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
+      // Delay để scroll hoàn thành trước khi thay đổi state
+      setTimeout(() => {
+        setShowAll(false);
+      }, 300);
+    } else {
+      // Khi mở rộng, chỉ thay đổi state
+      setShowAll(true);
+    }
+  };
+
+  // Hiển thị 3 card đầu tiên hoặc tất cả tùy vào state
+  const displayedTeam = showAll ? team : team.slice(0, 3);
+  const carouselItems = [
+    {
+      imgSrc:
+        "https://res.cloudinary.com/drxhxp8rb/image/upload/v1754382526/default-avatar-icon-of-social-media-user-vector_eajxmc.jpg",
+    },
+    {
+      imgSrc:
+        "https://res.cloudinary.com/drxhxp8rb/image/upload/v1754382526/default-avatar-icon-of-social-media-user-vector_eajxmc.jpg",
+    },
+    {
+      imgSrc:
+        "https://res.cloudinary.com/drxhxp8rb/image/upload/v1754382526/default-avatar-icon-of-social-media-user-vector_eajxmc.jpg",
+    },
+    {
+      imgSrc:
+        "https://res.cloudinary.com/drxhxp8rb/image/upload/v1754382526/default-avatar-icon-of-social-media-user-vector_eajxmc.jpg",
+    },
+    {
+      imgSrc:
+        "https://res.cloudinary.com/drxhxp8rb/image/upload/v1754382526/default-avatar-icon-of-social-media-user-vector_eajxmc.jpg",
+    },
+  ];
   return (
     <div className="min-h-screen bg-slate-900 text-white">
       <Header />
@@ -154,123 +260,73 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Why Choose Us */}
-      <section className="py-20 bg-slate-900">
-        <div className="container mx-auto px-4 lg:px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold mb-4">
-              Tại sao chọn chúng tôi?
-            </h2>
-            <p className="text-xl text-slate-300 max-w-2xl mx-auto">
-              Những lý do khiến chúng tôi trở thành lựa chọn hàng đầu trong lĩnh
-              vực tuyển dụng vệ sĩ
-            </p>
-          </div>
-          <Carousel
-            opts={{
-              align: "start",
-              loop: false,
-              slidesToScroll: 1,
-            }}
-            className="w-full max-w-6xl mx-auto"
-          >
-            <CarouselContent className="-ml-2 md:-ml-4">
-              <CarouselItem className="pl-2 md:pl-4 basis-full md:basis-1/2 lg:basis-1/3 xl:basis-1/4">
-                {/* <div className="text-center space-y-4 p-4">
-                  <div className="bg-red-600/20 p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto">
-                    <CheckCircle className="h-8 w-8 text-red-500" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-white">Uy tín</h3>
-                  <p className="text-slate-300">
-                    5+ năm kinh nghiệm trong lĩnh vực tuyển dụng vệ sĩ
-                  </p>
-                </div> */}
-                <div className="text-center space-y-4 p-4">
-                  <img src="https://res.cloudinary.com/drxhxp8rb/image/upload/v1754382526/default-avatar-icon-of-social-media-user-vector_eajxmc.jpg" />
-                </div>
-              </CarouselItem>
-              <CarouselItem className="pl-2 md:pl-4 basis-full md:basis-1/2 lg:basis-1/3 xl:basis-1/4">
-                {/* <div className="text-center space-y-4 p-4">
-                  <div className="bg-red-600/20 p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto">
-                    <Star className="h-8 w-8 text-red-500" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-white">
-                    Chất lượng
-                  </h3>
-                  <p className="text-slate-300">
-                    Tuyển chọn kỹ lưỡng, đào tạo chuyên nghiệp
-                  </p>
-                </div> */}
-                <div className="text-center space-y-4 p-4">
-                  <img src="https://res.cloudinary.com/drxhxp8rb/image/upload/v1754382526/default-avatar-icon-of-social-media-user-vector_eajxmc.jpg" />
-                </div>
-              </CarouselItem>
-              <CarouselItem className="pl-2 md:pl-4 basis-full md:basis-1/2 lg:basis-1/3 xl:basis-1/4">
-                {/* <div className="text-center space-y-4 p-4">
-                  <div className="bg-red-600/20 p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto">
-                    <Users className="h-8 w-8 text-red-500" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-white">Đội ngũ</h3>
-                  <p className="text-slate-300">
-                    500+ vệ sĩ chuyên nghiệp đã được tuyển dụng
-                  </p>
-                </div> */}
-                <div className="text-center space-y-4 p-4">
-                  <img src="https://res.cloudinary.com/drxhxp8rb/image/upload/v1754382526/default-avatar-icon-of-social-media-user-vector_eajxmc.jpg" />
-                </div>
-              </CarouselItem>
-              <CarouselItem className="pl-2 md:pl-4 basis-full md:basis-1/2 lg:basis-1/3 xl:basis-1/4">
-                {/* <div className="text-center space-y-4 p-4">
-                  <div className="bg-red-600/20 p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto">
-                    <Shield className="h-8 w-8 text-red-500" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-white">Bảo mật</h3>
-                  <p className="text-slate-300">
-                    Đảm bảo tính bảo mật và an toàn tuyệt đối
-                  </p>
-                </div> */}
-                <div className="text-center space-y-4 p-4">
-                  <img src="https://res.cloudinary.com/drxhxp8rb/image/upload/v1754382526/default-avatar-icon-of-social-media-user-vector_eajxmc.jpg" />
-                </div>
-              </CarouselItem>
-              <CarouselItem className="pl-2 md:pl-4 basis-full md:basis-1/2 lg:basis-1/3 xl:basis-1/4">
-                {/* <div className="text-center space-y-4 p-4">
-                  <div className="bg-red-600/20 p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto">
-                    <Shield className="h-8 w-8 text-red-500" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-white">Bảo mật</h3>
-                  <p className="text-slate-300">
-                    Đảm bảo tính bảo mật và an toàn tuyệt đối
-                  </p>
-                </div> */}
-                <div className="text-center space-y-4 p-4">
-                  <img src="https://res.cloudinary.com/drxhxp8rb/image/upload/v1754382526/default-avatar-icon-of-social-media-user-vector_eajxmc.jpg" />
-                </div>
-              </CarouselItem>
-              <CarouselItem className="pl-2 md:pl-4 basis-full md:basis-1/2 lg:basis-1/3 xl:basis-1/4">
-                {/* <div className="text-center space-y-4 p-4">
-                  <div className="bg-red-600/20 p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto">
-                    <Shield className="h-8 w-8 text-red-500" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-white">Bảo mật</h3>
-                  <p className="text-slate-300">
-                    Đảm bảo tính bảo mật và an toàn tuyệt đối
-                  </p>
-                </div> */}
-                <div className="text-center space-y-4 p-4">
-                  <img src="https://res.cloudinary.com/drxhxp8rb/image/upload/v1754382526/default-avatar-icon-of-social-media-user-vector_eajxmc.jpg" />
-                </div>
-              </CarouselItem>
-            </CarouselContent>
-            <CarouselPrevious className="hidden md:flex bg-red-600 hover:bg-red-700 text-white border-red-600 hover:border-red-700" />
-            <CarouselNext className="hidden md:flex bg-red-600 hover:bg-red-700 text-white border-red-600 hover:border-red-700" />
-          </Carousel>
-        </div>
-      </section>
-
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-red-600 to-red-700">
-        <div
+      {/* <section className="py-20 bg-gradient-to-r from-red-600 to-red-700"> */}
+      <section ref={sectionRef} className="py-20 bg-slate-800">
+        <div className="grid md:grid-cols-3 gap-8">
+          {displayedTeam.map((member, index) => (
+            <Card
+              key={index}
+              className="bg-slate-700 border-slate-600 text-center transition-all duration-300 hover:transform hover:scale-105 relative group overflow-hidden"
+            >
+              <CardHeader>
+                <Image
+                  src={member.image || "/placeholder.svg"}
+                  alt={member.name}
+                  width={300}
+                  height={300}
+                  className="rounded-full w-32 h-32 mx-auto mb-4 object-cover"
+                />
+                <CardTitle className="text-white text-xl">
+                  {member.name}
+                </CardTitle>
+                <CardDescription className="text-red-400 font-semibold">
+                  {member.position}
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-slate-300">{member.experience}</p>
+              </CardContent>
+
+              {/* Overlay với nút Xem chi tiết */}
+              <div className="absolute inset-0 bg-slate-900/90 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <button
+                  onClick={() => {
+                    // Xử lý khi click xem chi tiết
+                    console.log(`Xem chi tiết ${member.name}`);
+                    alert(`Xem chi tiết ${member.name}`);
+                  }}
+                  className="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors duration-200 transform translate-y-4 group-hover:translate-y-0"
+                >
+                  Xem chi tiết
+                </button>
+              </div>
+            </Card>
+          ))}
+        </div>
+
+        {/* Nút Xem thêm/Thu gọn */}
+        {team.length > 3 && (
+          <div className="text-center mt-12">
+            <button
+              onClick={handleToggle}
+              className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors duration-300 shadow-lg hover:shadow-xl"
+            >
+              {showAll ? (
+                <>
+                  Thu gọn
+                  <ChevronUp className="w-5 h-5" />
+                </>
+              ) : (
+                <>
+                  Xem thêm
+                  <ChevronDown className="w-5 h-5" />
+                </>
+              )}
+            </button>
+          </div>
+        )}
+        {/* <div
           className="container mx-auto px-4 lg:px-6"
           style={{ display: "flex", flexWrap: "wrap" }}
         >
@@ -335,7 +391,7 @@ export default function HomePage() {
               flex-wrap: nowrap;
             }
           }
-        `}</style>
+        `}</style> */}
         {/* <h2 className="text-3xl lg:text-4xl font-bold mb-4 text-white">
             Sẵn sàng bắt đầu sự nghiệp vệ sĩ?
           </h2>
@@ -362,6 +418,46 @@ export default function HomePage() {
               </Button>
             </Link>
           </div> */}
+      </section>
+
+      {/* Why Choose Us */}
+      <section className="py-20 bg-slate-900">
+        <div className="container mx-auto px-4 lg:px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl lg:text-4xl font-bold mb-4">
+              Tại sao chọn chúng tôi?
+            </h2>
+            <p className="text-xl text-slate-300 max-w-2xl mx-auto">
+              Những lý do khiến chúng tôi trở thành lựa chọn hàng đầu trong lĩnh
+              vực tuyển dụng vệ sĩ
+            </p>
+          </div>
+          <Carousel
+            opts={{
+              align: "start",
+              loop: false,
+              slidesToScroll: 1,
+            }}
+            className="w-full max-w-6xl mx-auto"
+          >
+            <CarouselContent className="-ml-2 md:-ml-4">
+              {carouselItems.map((item, index) => (
+                <CarouselItem
+                  key={index}
+                  className="pl-2 md:pl-4 basis-full md:basis-1/2 lg:basis-1/3 xl:basis-1/4"
+                >
+                  <div className="text-center space-y-4 p-4">
+                    <img src={item.imgSrc} />
+                    {/* <h3 className="text-xl font-semibold text-white">{item.title}</h3>
+            <p className="text-slate-300">{item.description}</p> */}
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="hidden md:flex bg-red-600 hover:bg-red-700 text-white border-red-600 hover:border-red-700" />
+            <CarouselNext className="hidden md:flex bg-red-600 hover:bg-red-700 text-white border-red-600 hover:border-red-700" />
+          </Carousel>
+        </div>
       </section>
 
       <Footer />
