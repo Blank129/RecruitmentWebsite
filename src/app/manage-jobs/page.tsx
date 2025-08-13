@@ -265,9 +265,9 @@ export default function ManageJobsPage() {
 
   const handleSkillToggle = (skillId: string) => {
     const currenttags = formData.tags || [];
-    const updatedtags = currenttags.includes(skillId as any)
-      ? currenttags.filter((s) => s !== (skillId as any))
-      : [...currenttags, skillId];
+    const updatedtags = currenttags.some((tag: any) => tag.id === skillId)
+      ? currenttags.filter((tag: any) => tag.id !== skillId)
+      : [...currenttags, { id: skillId, name: getSkillNameById(skillId) }];
 
     console.log("=== CẬP NHẬT tags ===");
     console.log("Skill ID được toggle:", skillId);
@@ -280,7 +280,7 @@ export default function ManageJobsPage() {
   // 5. Cập nhật removeSkill để sử dụng id
   const removeSkill = (skillIdToRemove: string) => {
     const updatedtags = (formData.tags || []).filter(
-      (skillId: any) => skillId !== skillIdToRemove
+      (tag: any) => tag.id !== skillIdToRemove
     );
 
     console.log("=== XÓA SKILL ===");
