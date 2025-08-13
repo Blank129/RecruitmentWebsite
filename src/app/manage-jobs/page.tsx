@@ -41,7 +41,6 @@ import { Header } from "@/src/components/header";
 import { Footer } from "@/src/components/footer";
 import { RecruitContext } from "@/src/context/recruitContext";
 import TextEditor from "./textEditor";
-import { supabase } from "@/src/config/supabase";
 
 interface Applicant {
   id: string;
@@ -125,26 +124,6 @@ export default function ManageJobsPage() {
     const token = localStorage.getItem("userToken");
     if (token) {
       handleGetListRecruit(token);
-
-      const channel = supabase
-      .channel('jobs-changes')
-      .on(
-        'postgres_changes',
-        {
-          event: '*', 
-          schema: 'public',
-          table: 'job_posts',
-        },
-        (payload) => {
-          console.log('Change received!', payload)
-          handleGetListRecruit(token);
-        }
-      )
-      .subscribe()
-
-    return () => {
-      supabase.removeChannel(channel)
-    }
     }
   }, []);
 
