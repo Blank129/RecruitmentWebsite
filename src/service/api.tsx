@@ -61,6 +61,78 @@ export const getJobs = async () => {
   }
 };
 
+export const getTypeRecruit = async () => {
+  try {
+    const res = await axiosApiInstance.get("/cms/recruitment-types");
+    return res.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const getTags = async () => {
+  try {
+    const res = await axiosApiInstance.get("/cms/tags");
+    return res.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const getListRecruitment = async () => {
+  try {
+    const token = localStorage.getItem("userToken");
+    if (!token) {
+      throw new Error("No authentication token found");
+    }
+
+    const res = await axiosApiInstance.get("/cms/recruitments", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return res.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const postAddRecruit = async (recruitmentData: any) => {
+  try {
+    const token = localStorage.getItem("userToken");
+    if (!token) {
+      throw new Error("No authentication token found");
+    }
+
+    const res = await axiosApiInstance.post("/cms/recruitments", recruitmentData, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return res.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const putUpdateRecruit = async (recruitmentId: string, recruitmentData: any) => {
+  try {
+    const token = localStorage.getItem("userToken");
+    if (!token) {
+      throw new Error("No authentication token found");
+    }
+
+    const res = await axiosApiInstance.put(`/cms/recruitments/${recruitmentId}`, recruitmentData, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return res.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
 // export const updateJobStatus = async (jobId: string, status: boolean) => {
 //   try {
 //     const res = await axiosApiInstance.put(`/cms/jobs/submit/${jobId}`, {
