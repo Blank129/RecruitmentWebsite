@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "../../styles/globals.css";
 import { AuthProvider } from "../context/authContext";
 import { JobProvider } from "../context/jobContext";
+import { RecruitProvider } from "../context/recruitContext";
 //import HomeCmsPageContent from "../../cms/home/page";
 export const metadata: Metadata = {
   title: "v0 App",
@@ -18,7 +19,9 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <AuthProvider>
-          <JobProvider>{children}</JobProvider>
+          <JobProvider>
+            <RecruitProvider>{children}</RecruitProvider>
+          </JobProvider>
         </AuthProvider>
       </body>
     </html>
